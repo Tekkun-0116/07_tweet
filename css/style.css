@@ -8,3 +8,11 @@
 .tweet-list li {
   list-style: none;
 } 
+
+.good-link {
+  text-decoration: none;
+}
+
+.bad-link {
+  text-decoration: none;
+}
