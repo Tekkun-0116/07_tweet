@@ -3,7 +3,7 @@
 require_once('config.php');
 require_once('functions.php');
 
-$id =$_GET['id'];
+$id = $_GET['id'];
 
 $dbh = connectDb();
 $sql = "select * from tweets where id = :id";

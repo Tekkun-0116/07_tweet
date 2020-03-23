@@ -3,7 +3,7 @@
 require_once('config.php');
 require_once('functions.php');
 
-$id =$_GET['id'];
+$id = $_GET['id'];
 
 $dbh = connectDb();
 $sql = "select * from tweets where id = :id";
@@ -28,13 +28,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (empty($errors)) {
     $dbh = connectDb();
     $sql = "update tweets set content = :content, created_at = now() where id = :id";
-  $stmt = $dbh->prepare($sql);
-  $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-  $stmt->bindParam(":content", $content);
-  $stmt->execute();
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+    $stmt->bindParam(":content", $content);
+    $stmt->execute();
 
-  header('Location: index.php');
-  exit;
+    header('Location: index.php');
+    exit;
   }
 }
 
@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <title>Tweetアプリ</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <h1>tweetの編集</h1>
   <p><a href="index.php">戻る</a></p>
@@ -64,10 +66,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <form action="" method="post">
     <p>
       <label for="content">ツイート内容</label><br>
-        <textarea name="content" cols="30" rows="5"><?php echo h($tweet['content']); ?></textarea>
+      <textarea name="content" cols="30" rows="5"><?php echo h($tweet['content']); ?></textarea>
       <br>
-        <input type="submit" value="編集する">
+      <input type="submit" value="編集する">
     </p>
   </form>
 </body>
+
 </html>
