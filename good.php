@@ -24,6 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   $stmt->execute();
   $tweet = $stmt->fetch(PDO::FETCH_ASSOC);
 
-  header('Location: index.php');
+
+  $hpr = $_SERVER['HTTP_REFERER'];
+  header('Location:' . $hpr);
   exit;
 }
